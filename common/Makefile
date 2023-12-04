@@ -7,7 +7,7 @@ solve: $(BIN)
 	./$(BIN)
 
 %.exe: %.ml
-	ocamlopt -o $@ $<
+	ocamlopt -I +str str.cmxa -o $@ $<
 
 clean:
 	rm -f *~ \#*
