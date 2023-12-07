@@ -9,3 +9,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 3. [Gear Ratios](2023/03.gear-ratios)
 4. [Scratchcards](2023/04.scratchcards)
 5. [If You Give A Seed A Fertilizer](2023/05.if-you-give-a-seed-a-fertilizer)
+6. [Wait For It](2023/06.wait-for-it)
