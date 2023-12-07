@@ -8,3 +8,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 2. [Cube Conundrum](2023/02.cube-conundrum)
 3. [Gear Ratios](2023/03.gear-ratios)
 4. [Scratchcards](2023/04.scratchcards)
+5. [If You Give A Seed A Fertilizer](2023/05.if-you-give-a-seed-a-fertilizer)
