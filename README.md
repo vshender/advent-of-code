@@ -12,3 +12,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 6. [Wait For It](2023/06.wait-for-it)
 7. [Camel Cards](2023/07.camel-cards)
 8. [Haunted Wasteland](2023/08.haunted-wasteland)
+9. [Mirage Maintenance](2023/09.mirage-maintenance)
