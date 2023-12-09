@@ -11,3 +11,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 5. [If You Give A Seed A Fertilizer](2023/05.if-you-give-a-seed-a-fertilizer)
 6. [Wait For It](2023/06.wait-for-it)
 7. [Camel Cards](2023/07.camel-cards)
+8. [Haunted Wasteland](2023/08.haunted-wasteland)
