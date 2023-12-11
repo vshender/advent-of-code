@@ -14,3 +14,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 8. [Haunted Wasteland](2023/08.haunted-wasteland)
 9. [Mirage Maintenance](2023/09.mirage-maintenance)
 10. [Pipe Maze](2023/10.pipe-maze)
+11. [Cosmic Expansion](2023/11.cosmic-expansion)
