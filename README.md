@@ -16,3 +16,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 10. [Pipe Maze](2023/10.pipe-maze)
 11. [Cosmic Expansion](2023/11.cosmic-expansion)
 12. [Hot Springs](2023/12.hot-springs)
+13. [Point of Incidence](2023/13.point-of-incidence)
