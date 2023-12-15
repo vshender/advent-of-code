@@ -18,3 +18,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 12. [Hot Springs](2023/12.hot-springs)
 13. [Point of Incidence](2023/13.point-of-incidence)
 14. [Parabolic Reflector Dish](2023/14.parabolic-reflector-dish)
+15. [Lens Library](2023/15.lens-library)
