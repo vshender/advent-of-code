@@ -21,3 +21,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 15. [Lens Library](2023/15.lens-library)
 16. [The Floor Will Be Lava](2023/16.the-floor-will-be-lava)
 17. [Clumsy Crucible](2023/17.clumsy-crucible)
+18. [Lavaduct Lagoon](2023/18.lavaduct-lagoon)
