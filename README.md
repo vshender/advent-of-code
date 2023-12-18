@@ -20,3 +20,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 14. [Parabolic Reflector Dish](2023/14.parabolic-reflector-dish)
 15. [Lens Library](2023/15.lens-library)
 16. [The Floor Will Be Lava](2023/16.the-floor-will-be-lava)
+17. [Clumsy Crucible](2023/17.clumsy-crucible)
