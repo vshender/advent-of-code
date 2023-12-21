@@ -42,7 +42,7 @@ class broadcast targets = object
 end
 
 (** [parse_module mc] parses a string representation of a module. *)
-let parse_module mc =
+let parse_module mc : string * module_ =
   let open Str in
   match split (regexp " s*-> *") mc with
   | [ name; targets ] ->
@@ -76,35 +76,89 @@ let parse_module_configuration lines =
 
   modules
 
-(** [push_button modules] pushes the button and counts the number of low
-    pulses and high pulses sent. *)
-let push_button modules =
+(** [push_button modules wait_for_high] pushes the button, counts the number of
+    low pulses and high pulses sent, and also returns those modules from the
+    list [wait_for_high] that sent a high pulse. *)
+let push_button modules wait_for_high =
   let low_cnt = ref 0 and high_cnt = ref 0
-  and q = Queue.create () in
+  and q = Queue.create ()
+  and sent_high = ref [] in
   Queue.push ("button", "broadcaster", Low) q;
   while Queue.length q > 0 do
     let source, target, pulse = Queue.pop q in
     incr (if pulse = Low then low_cnt else high_cnt);
+    if List.mem source wait_for_high && pulse = High then
+      sent_high := source :: !sent_high;
     match Hashtbl.find_opt modules target with
     | Some md ->
       md#send_pulse source pulse
       |> List.iter (fun (target', pulse') -> Queue.push (target, target', pulse') q)
     | None -> ()
   done;
-  !low_cnt, !high_cnt
+  !low_cnt, !high_cnt, !sent_high
 
 (** [part1 modules] pushes the button 1000 times, calculates the number of low
     pulses and high pulses sent, and returns the product of these numbers. *)
 let part1 modules =
   let low_cnt = ref 0 and high_cnt = ref 0 in
   for i = 1 to 1000 do
-    let low_cnt', high_cnt' = push_button modules in
+    let low_cnt', high_cnt', _ = push_button modules [] in
     low_cnt := !low_cnt + low_cnt'; high_cnt := !high_cnt + high_cnt'
   done;
   !low_cnt * !high_cnt
+
+(** [gcd a b] is the greatest common divisor of [a] and [b]. *)
+let rec gcd a b =
+  if b = 0 then
+    a
+  else
+    gcd b (a mod b)
+
+(** [lcm a b] is the least common multiple of [a] and [b]. *)
+let lcm a b = a / gcd a b * b
+
+(** [part2 modules] finds the fewest number of button presses required to
+    deliver a single low pulse to the module named "rx". *)
+let part2 modules =
+  (* The conjunction module that is source for "rx". *)
+  let rx_src =
+    Hashtbl.fold
+      (fun name md rx_srcs ->
+        if List.mem "rx" md#targets then name :: rx_srcs else rx_srcs)
+      modules []
+    |> List.hd in
+
+  (* The conjunction modules that are sources for the source for "rx". *)
+  let rx_src_srcs = Hashtbl.fold
+      (fun name md srcs ->
+         if List.mem rx_src md#targets then name :: srcs else srcs)
+      modules [] in
+
+  (* The steps at which modules from [rx_src_srcs] first send a high pulse. *)
+  let first_high = ref [] in
+
+  (* The lengths of loops in which modules from [rx_src_srcs] send a hight
+     pulse. *)
+  let loop_lengths = ref [] in
+
+  let rec iter n =
+    let _, _, high = push_button modules rx_src_srcs in
+
+    high |> List.iter (fun name ->
+      if not (List.mem_assoc name !first_high) then
+        first_high := (name, n) :: !first_high
+      else if not (List.mem_assoc name !loop_lengths) then
+        loop_lengths := (name, n - List.assoc name !first_high) :: !loop_lengths);
+
+    if List.length !loop_lengths < List.length rx_src_srcs then
+      iter (n + 1)
+  in iter 1;
+
+  !loop_lengths |> List.map snd |> List.fold_left lcm 1
 
 let () =
   let modules = open_in "input"
                 |> In_channel.input_lines
                 |> parse_module_configuration in
-  Printf.printf "Part One: %d\n" (part1 modules)
+  Printf.printf "Part One: %d\n" (part1 modules);
+  Printf.printf "Part Two: %d\n" (part2 modules)
