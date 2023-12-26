@@ -82,9 +82,82 @@ let part1 bricks =
   in
   List.length bricks - BrickSet.cardinal cannot_be_desintegrated
 
+module Graph (V : Set.OrderedType) = struct
+  (** Vertices set. *)
+  module VSet = Set.Make (V)
+
+  (** The type of graphs. *)
+  type t = {
+    outgoing : (V.t, VSet.t) Hashtbl.t;
+    incoming : (V.t, VSet.t) Hashtbl.t;
+  }
+
+  (** [create ()] creates an empty graph. *)
+  let create () = {
+    outgoing = Hashtbl.create 64;
+    incoming = Hashtbl.create 64;
+  }
+
+  (** [add_edge graph a b] adds the edge [a]->[b] to [graph]. *)
+  let add_edge { outgoing; incoming } a b =
+    Hashtbl.replace outgoing a
+      (Hashtbl.find_opt outgoing a |> Option.value ~default:VSet.empty |> VSet.add b);
+    Hashtbl.replace incoming b
+      (Hashtbl.find_opt incoming b |> Option.value ~default:VSet.empty |> VSet.add a)
+
+  (** [remove_source_and_dependents graph start] performs an iterative removal
+      of source vertices (vertices with no incoming edges) from [graph],
+      starting with the [start] vertex, and subsequently removes any vertices
+      that become sources as a result.  The starting vertex may have incoming
+      edges. *)
+  let remove_source_and_dependents { outgoing; incoming } src =
+    let q = Queue.create () and removed = ref VSet.empty in
+    Queue.add src q;
+    while not (Queue.is_empty q) do
+      let v = Queue.pop q in
+      removed := VSet.add v !removed;
+      match Hashtbl.find_opt outgoing v with
+      | None       -> ()
+      | Some v_out ->
+        VSet.iter
+          (fun u ->
+             if VSet.diff (Hashtbl.find incoming u) !removed |> VSet.cardinal = 0 then
+               Queue.push u q)
+          v_out
+    done;
+    !removed
+end
+
+module BrickGraph = Graph (Brick)
+
+(** [build_support_graph bricks] builds a graph in which an edge [a]->[b]
+    exists if the brick [a] supports the brick [b]. *)
+let build_support_graph bricks =
+  let g = BrickGraph.create () in
+  let rec build_iter seen = function
+    | []              -> ()
+    | brick :: bricks ->
+      supporting_bricks brick seen
+      |> BrickSet.iter (fun sbrick -> BrickGraph.add_edge g sbrick brick);
+      build_iter (brick :: seen) bricks
+  in bricks |> List.sort compare_z |> build_iter [];
+  g
+
+(** [part2 bricks] for each brick determines how many other bricks would fall
+    if that brick were disintegrated.  Returns the sum of the numbers of other
+    bricks that would fall. *)
+let part2 bricks =
+  let bricks = drop_down_bricks bricks in
+  let graph = build_support_graph bricks in
+  bricks
+  |> List.map (fun brick ->
+      BrickSet.cardinal (BrickGraph.remove_source_and_dependents graph brick) - 1)
+  |> List.fold_left (+) 0
+
 let () =
   let bricks = open_in "input"
                |> In_channel.input_lines
                |> List.map Brick.parse
   in
-  Printf.printf "Part One: %d\n" (part1 bricks)
+  Printf.printf "Part One: %d\n" (part1 bricks);
+  Printf.printf "Part Two: %d\n" (part2 bricks)
