@@ -26,3 +26,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 20. [Pulse Propagation](2023/20.pulse-propagation)
 21. [Step Counter](2023/21.step-counter)
 22. [Sand Slabs](2023/22.sand-slabs)
+23. [A Long Walk](2023/23.a-long-walk)
