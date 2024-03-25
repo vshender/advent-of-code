@@ -2,6 +2,10 @@
 
 My solutions to the [Advent of Code](https://adventofcode.com/) problems written in [OCaml](https://ocaml.org/).
 
+## 2022
+
+1. [Calorie Counting](2022/01.calorie-counting)
+
 ## 2023
 
 1. [Trebuchet?!](2023/01.trebuchet)
