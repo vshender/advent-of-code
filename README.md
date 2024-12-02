@@ -36,3 +36,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 ## 2024
 
 1. [Day 1: Historian Hysteria](2024/01.historian-hysteria)
+2. [Day 2: Red-Nosed Reports](2024/02.red-noised-reports)
