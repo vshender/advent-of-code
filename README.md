@@ -38,3 +38,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 1. [Day 1: Historian Hysteria](2024/01.historian-hysteria)
 2. [Day 2: Red-Nosed Reports](2024/02.red-noised-reports)
 3. [Day 3: Mull It Over](2024/03.mull-it-over)
+4. [Day 4: Ceres Search](2024/04.ceres-search)
