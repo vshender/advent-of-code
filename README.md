@@ -39,3 +39,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 2. [Day 2: Red-Nosed Reports](2024/02.red-noised-reports)
 3. [Day 3: Mull It Over](2024/03.mull-it-over)
 4. [Day 4: Ceres Search](2024/04.ceres-search)
+5. [Day 5: Print Queue](2024/05.print-queue)
