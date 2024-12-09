@@ -41,3 +41,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 4. [Day 4: Ceres Search](2024/04.ceres-search)
 5. [Day 5: Pringt Queue](2024/05.print-queue)
 6. [Day 6: Guard Gallivant](2024/06.guard-gallivant)
+7. [Day 7: Bridge Repair](2024/07.bridge-repair)
