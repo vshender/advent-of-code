@@ -35,11 +35,11 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 
 ## 2024
 
-1. [Day 1: Historian Hysteria](2024/01.historian-hysteria)
-2. [Day 2: Red-Nosed Reports](2024/02.red-noised-reports)
-3. [Day 3: Mull It Over](2024/03.mull-it-over)
-4. [Day 4: Ceres Search](2024/04.ceres-search)
-5. [Day 5: Pringt Queue](2024/05.print-queue)
-6. [Day 6: Guard Gallivant](2024/06.guard-gallivant)
-7. [Day 7: Bridge Repair](2024/07.bridge-repair)
-8. [Day 8: Resonant Collinearity](2024/08.resonant-collinearity)
+1. [Historian Hysteria](2024/01.historian-hysteria)
+2. [Red-Nosed Reports](2024/02.red-noised-reports)
+3. [Mull It Over](2024/03.mull-it-over)
+4. [Ceres Search](2024/04.ceres-search)
+5. [Pringt Queue](2024/05.print-queue)
+6. [Guard Gallivant](2024/06.guard-gallivant)
+7. [Bridge Repair](2024/07.bridge-repair)
+8. [Resonant Collinearity](2024/08.resonant-collinearity)
