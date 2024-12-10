@@ -44,3 +44,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 7. [Bridge Repair](2024/07.bridge-repair)
 8. [Resonant Collinearity](2024/08.resonant-collinearity)
 9. [Disk Fragmenter](2024/09.disk-fragmenter)
+10. [Hoof It](2024/10.hoof-it)
