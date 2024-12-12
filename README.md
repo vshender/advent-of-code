@@ -46,3 +46,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 9. [Disk Fragmenter](2024/09.disk-fragmenter)
 10. [Hoof It](2024/10.hoof-it)
 11. [Plutonian Pebbles](2024/11.plutonian-pebbles)
+12. [Garden Groups](2024/12.garden-groups)
