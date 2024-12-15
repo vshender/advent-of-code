@@ -47,3 +47,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 10. [Hoof It](2024/10.hoof-it)
 11. [Plutonian Pebbles](2024/11.plutonian-pebbles)
 12. [Garden Groups](2024/12.garden-groups)
+13. [Claw Contraption](2024/13.claw-contraption)
