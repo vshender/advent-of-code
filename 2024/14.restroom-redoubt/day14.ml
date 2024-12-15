@@ -37,11 +37,40 @@ let safety_factor robots =
       robots
   in q1 * q2 * q3 * q4
 
+(** [print_robots robots] prints [robots] to the screen. *)
+let print_robots robots =
+  let lines = Array.init m (fun _ -> Bytes.make n ' ') in
+  List.iter (fun { px; py; _ } -> Bytes.set lines.(py) px '*') robots;
+  Array.iter (fun line -> Printf.printf "%s\n" @@ Bytes.unsafe_to_string line) lines
+
+(** The set of points. *)
+module PointSet = Set.Make (struct type t = (int * int) let compare = compare end)
+
+(** [all_positions_unique robots] is [true] if all the robots occupy different
+    positions. *)
+let all_positions_unique robots =
+  List.length robots = PointSet.cardinal
+    (List.fold_left
+       (fun rset { px; py; _ } -> PointSet.add (px, py) rset)
+       PointSet.empty robots)
+
 (** [part1 robots] solves the part one of the problem. *)
 let part1 robots =
   robots |> List.map (repeat step 100) |> safety_factor
 
+(** [part2 robots] solves the part two of the problem. *)
+let part2 robots =
+  let rec loop robots n =
+    let robots = List.map step robots in
+    if all_positions_unique robots then begin
+      print_robots robots;
+      n
+    end else
+      loop robots (n + 1)
+  in loop robots 1
+
 let () =
   In_channel.with_open_text "input" @@ fun ic ->
   let robots = In_channel.input_lines ic |> List.map parse_robot in
-  Printf.printf "Part One: %d\n" @@ part1 robots
+  Printf.printf "Part One: %d\n" @@ part1 robots;
+  Printf.printf "Part Two: %d\n" @@ part2 robots
