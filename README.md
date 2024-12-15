@@ -48,3 +48,4 @@ My solutions to the [Advent of Code](https://adventofcode.com/) problems written
 11. [Plutonian Pebbles](2024/11.plutonian-pebbles)
 12. [Garden Groups](2024/12.garden-groups)
 13. [Claw Contraption](2024/13.claw-contraption)
+14. [Restroom Redoubt](2024/14.restroom-redoubt)
